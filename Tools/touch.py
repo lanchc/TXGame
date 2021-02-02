@@ -1,34 +1,1 @@
-import wda
-import Tools.utility as common
-
-
-# 操作设备
-c = wda.Client()
-s = c.session()
-
-
-# 触摸事件
-class Touch:
-
-    # 构造方法
-    def __init__(self):
-        pass
-
-    # 点击位置
-    def click(self, x, y):
-        xx, yy = common.kk_transform_coordinates(x, y)
-        s.tap(xx, yy)
-
-    # 延迟点击
-    def delayed_click(self, x, y):
-        xx, yy = common.kk_transform_coordinates(x, y)
-        s.tap(xx, yy)
-        common.kk_delay()
-
-    # 截图当前
-    def screen_capture(self):
-        s.screenshot('./kk_screen.png')
-        common.kk_delay()
-
-# 导出类
-kk_touch = Touch()
+import wdaimport Tools.utility as common# wda.DEBUG = False  # default False# wda.HTTP_TIMEOUT = 30.0  # default 60.0 seconds# 操作设备# c = wda.Client()# 如果只有一个设备也可以简写为# If there is only one iPhone connecttdc = wda.USBClient()s = c.session()# # 支持指定设备的udid，和WDA的端口号# # Specify udid and WDA port# c = wda.USBClient("539c5fffb18f2be0bf7f771d68f7c327fb68d2d9", port=8100)## # 也支持通过DEVICE_URL访问# c = wda.Client("usbmux://{udid}:8100".format(udid="539c5fffb18f2be0bf7f771d68f7c327fb68d2d9"))# print(c.window_size())# 触摸事件class Touch:    # 构造方法    def __init__(self):        pass    # 点击位置    def click(self, x, y):        xx, yy = common.kk_transform_coordinates(x, y)        s.tap(xx, yy)    # 延迟点击    def delayed_click(self, x, y):        xx, yy = common.kk_transform_coordinates(x, y)        s.tap(xx, yy)        # print("点击: ", x, ",", y)        common.kk_delay()    # 截图当前    def screen_capture(self):        s.screenshot('./kk_screen.png')        common.kk_delay()# 导出类kk_touch = Touch()
