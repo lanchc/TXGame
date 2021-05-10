@@ -1,5 +1,4 @@
 import wda
-import time
 from Tools.touch import kk_touch
 ## 操作设备
 c = wda.Client()
